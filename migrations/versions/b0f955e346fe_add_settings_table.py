@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('key', sa.String(length=50), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=True),
     sa.Column('description', sa.String(length=255), nullable=True),
-    sa.Column('type', sa.Enum('string', 'integer', 'boolean', 'float', 'json'), nullable=True),
+    sa.Column('type', sa.Enum(name='setting_type', 'string', 'integer', 'boolean', 'float', 'json'), nullable=True),
     sa.Column('value', sa.String(length=255), nullable=True),
     sa.Column('depends_on', sa.String(length=50), nullable=True),
     sa.ForeignKeyConstraint(['depends_on'], ['setting.key'], name=op.f('fk_setting_depends_on_setting')),
