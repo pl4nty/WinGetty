@@ -59,11 +59,12 @@ def token_required(f):
             return jsonify({"message": "Token is missing!"}), 403
 
         try:
+            print(token)
             token = token.split(" ")[1]
             unverified_header = jwt.get_unverified_header(token)
             rsa_key = public_keys.get(unverified_header["kid"])
-            # if not rsa_key:
-            #     return jsonify({"message": "Token is invalid!"}), 403
+            if not rsa_key:
+                return jsonify({"message": "Token is invalid!"}), 403
 
             decoded_token = jwt.decode(
                 token,
