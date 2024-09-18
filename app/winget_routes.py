@@ -98,7 +98,7 @@ def information():
         {
             "Data": {
                 "SourceIdentifier": Setting.get("REPO_NAME").get_value(),
-                "ServerSupportedVersions": ["1.4.0", "1.5.0"],
+                "ServerSupportedVersions": ["1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.8.0"],
                 "Authentication": {
                     "AuthenticationType": "microsoftEntraId",
                     "MicrosoftEntraIdAuthenticationInfo": {
