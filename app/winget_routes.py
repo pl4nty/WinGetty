@@ -98,12 +98,18 @@ def information():
         {
             "Data": {
                 "SourceIdentifier": Setting.get("REPO_NAME").get_value(),
-                "ServerSupportedVersions": ["1.4.0", "1.5.0", "1.6.0", "1.7.0", "1.8.0"],
+                "ServerSupportedVersions": [
+                    "1.4.0",
+                    "1.5.0",
+                    "1.6.0",
+                    "1.7.0",
+                    "1.8.0",
+                ],
                 "Authentication": {
                     "AuthenticationType": "microsoftEntraId",
                     "MicrosoftEntraIdAuthenticationInfo": {
                         "Resource": "6e757b7f-1817-4f8f-968e-d4237473eae7",
-                        "Scope": "User.Read",
+                        "Scope": "api://6e757b7f-1817-4f8f-968e-d4237473eae7/user_impersonation",
                     },
                 },
             }
