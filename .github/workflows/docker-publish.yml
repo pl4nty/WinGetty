@@ -50,7 +50,7 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64 # also support the new mac architecture (requires buildx)
+          platforms: linux/amd64 # also support the new mac architecture (requires buildx)
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # use layer caching. Don't forget mode=max to also cache the build image
