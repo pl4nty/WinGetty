@@ -71,7 +71,6 @@ def token_required(f):
                 rsa_key,
                 algorithms=["RS256"],
                 audience=RESOURCE_ID,
-                issuer=issuer,
             )
             if SCOPE not in decoded_token.get("scp", "").split():
                 return (
