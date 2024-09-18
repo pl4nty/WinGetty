@@ -4,12 +4,14 @@ FROM python:3.9-alpine
 # Set the working directory in the container
 WORKDIR /app
 
+RUN apk add --no-cache build-base openssl-dev libffi-dev
+
 # Copy the requirements file into the container
 COPY requirements.txt .
 
-RUN apk add --no-cache build-base openssl-dev libffi-dev
 # Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+  pip install -r requirements.txt
 
 # Copy the Flask app code into the container
 COPY app/ app/
