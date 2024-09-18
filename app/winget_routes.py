@@ -34,7 +34,7 @@ winget = Blueprint("winget", __name__)
 
 # Configuration for Entra
 RESOURCE_ID = "6e757b7f-1817-4f8f-968e-d4237473eae7"
-SCOPE = "User.Read"
+SCOPE = "user_impersonation"
 OIDC_DISCOVERY_URL = (
     "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
 )
@@ -62,8 +62,8 @@ def token_required(f):
             token = token.split(" ")[1]
             unverified_header = jwt.get_unverified_header(token)
             rsa_key = public_keys.get(unverified_header["kid"])
-            if not rsa_key:
-                return jsonify({"message": "Token is invalid!"}), 403
+            # if not rsa_key:
+            #     return jsonify({"message": "Token is invalid!"}), 403
 
             decoded_token = jwt.decode(
                 token,
@@ -108,8 +108,8 @@ def information():
                 "Authentication": {
                     "AuthenticationType": "microsoftEntraId",
                     "MicrosoftEntraIdAuthenticationInfo": {
-                        "Resource": "6e757b7f-1817-4f8f-968e-d4237473eae7",
-                        "Scope": "api://6e757b7f-1817-4f8f-968e-d4237473eae7/user_impersonation",
+                        "Resource": RESOURCE_ID,
+                        "Scope": SCOPE,
                     },
                 },
             }
